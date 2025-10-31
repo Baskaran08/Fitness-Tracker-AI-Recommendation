@@ -1,0 +1,65 @@
+services:
+  mysql-user:
+    image: mysql:8
+    container_name: mysql-user
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fitness_microservices
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user123
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_user_data:/var/lib/mysql
+      - ./docker:/docker-entrypoint-initdb.d
+
+  mongodb-activity:
+    image: mongo:6
+    container_name: mongodb-activity
+    restart: always
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_activity_data:/data/db
+
+  mongodb-recommendation:
+    image: mongo:6
+    container_name: mongodb-recommendation
+    restart: always
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongodb_recommendation_data:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0.0
+    container_name: keycloak
+    command: start-dev
+    restart: always
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: dev-mem
+    ports:
+      - "8181:8080"
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+
+
+volumes:
+  mysql_user_data:
+  mongodb_activity_data:
+  mongodb_recommendation_data:
+  keycloak_data:
+  rabbitmq_data:
