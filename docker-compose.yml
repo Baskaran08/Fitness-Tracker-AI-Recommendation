@@ -11,8 +11,8 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - mysql_user_data:/var/lib/mysql
-      - ./docker:/docker-entrypoint-initdb.d
+      - ./docker/mysql_data:/var/lib/mysql
+      - ./docker/mysql_init:/docker-entrypoint-initdb.d
 
   mongodb-activity:
     image: mongo:6
@@ -21,7 +21,7 @@ services:
     ports:
       - "27018:27017"
     volumes:
-      - mongodb_activity_data:/data/db
+      - ./docker/mongo_activity_data:/data/db
 
   mongodb-recommendation:
     image: mongo:6
@@ -30,7 +30,7 @@ services:
     ports:
       - "27019:27017"
     volumes:
-      - mongodb_recommendation_data:/data/db
+      - ./docker/mongo_recommendation_data:/data/db
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -40,7 +40,7 @@ services:
       - "5672:5672"
       - "15672:15672"
     volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
+      - ./docker/rabbitmq_data:/var/lib/rabbitmq
 
   keycloak:
     image: quay.io/keycloak/keycloak:26.0.0
@@ -54,12 +54,4 @@ services:
     ports:
       - "8181:8080"
     volumes:
-      - keycloak_data:/opt/keycloak/data
-
-
-volumes:
-  mysql_user_data:
-  mongodb_activity_data:
-  mongodb_recommendation_data:
-  keycloak_data:
-  rabbitmq_data:
+      - ./docker/keycloak_data:/opt/keycloak/data

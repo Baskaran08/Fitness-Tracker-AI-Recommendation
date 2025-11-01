@@ -1,0 +1,4 @@
+docker/mysql_data/
+docker/mongo_activity_data/
+docker/mongo_recommendation_data/
+docker/rabbitmq_data/
