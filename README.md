@@ -1,35 +1,56 @@
 # 🏋️‍♂️ Fitness Tracker – Microservices Architecture (AI-Enabled)
 
-A production-style microservices system built with **Spring Boot, RabbitMQ, Keycloak, Eureka, API Gateway, Docker**, and **Gemini AI** for personalized fitness recommendations.
+A production-style microservices architecture built using **Spring Boot**, **Spring Cloud**, **RabbitMQ**, **Keycloak**, **Docker**, and **Gemini AI**.  
+This project demonstrates real industry patterns like service discovery, API Gateway routing, centralized configuration, asynchronous communication, and modern authentication.
+
+---
 
 ## 🚀 Tech Stack
-**Backend:** Java, Spring Boot  
-**Architecture:** Microservices, Eureka Server, Config Server, API Gateway  
-**Messaging:** RabbitMQ  
-**Security:** Keycloak (OIDC), Role-Based Access  
-**Database:** MySQL, MongoDB  
-**AI Integration:** Gemini API  
-**Containerization:** Docker & Docker Compose  
+
+### **Backend**
+- Java, Spring Boot
+- Microservices Architecture
+- Spring Cloud (Eureka, Config Server, API Gateway)
+- RabbitMQ (Asynchronous Message Broker)
+- Keycloak (Authentication & Authorization)
+
+### **Frontend**
+- React.js (fitness-app-frontend)
+
+### **Databases**
+- MySQL  
+- MongoDB  
+
+### **DevOps**
+- Docker & Docker Compose  
+- GitHub Actions (CI/CD)  
+
+### **AI Integration**
+- Gemini API for personalized recommendations
 
 ---
 
 ## 📌 Features
-- Microservices for Auth, Activity, Recommendation
-- Asynchronous event communication via **RabbitMQ**
-- Centralized configuration and service discovery
-- Keycloak authentication + RBAC
-- Fitness recommendation using **Gemini AI**
-- Dockerized environment (DB + RabbitMQ + Services)
-- Secure REST APIs with global exception handling
+
+- Modular microservices architecture  
+- Service Discovery using **Eureka Server**  
+- Centralized configuration using **Config Server**  
+- API routing and filtering using **Spring Cloud Gateway**  
+- Asynchronous communication between services via **RabbitMQ**  
+- Authentication & RBAC using **Keycloak**  
+- Personalized fitness suggestions powered by **Gemini AI**  
+- Dockerized environment for services + databases  
+- Clean folder separation for each microservice
 
 ---
 
 ## 🧱 Microservices Included
-- **Auth Service**  
+
+- **Auth Service (UserService)**  
 - **Activity Service**  
-- **Recommendation Service**  
-- **Eureka Server**  
+- **Recommendation (AI) Service**  
 - **API Gateway**  
+- **Eureka Server**  
 - **Config Server**  
 - **RabbitMQ Message Broker**
 
@@ -37,31 +58,75 @@ A production-style microservices system built with **Spring Boot, RabbitMQ, Keyc
 
 ## 📂 Project Structure
 
+```txt
 Fitness-Tracker-AI-Recommendation/
  ├── AIService/               # AI Recommendation microservice (Gemini API)
  ├── ActivityService/         # Activity tracking microservice
  ├── ApiGateway/              # Spring Cloud API Gateway
  ├── ConfigServer/            # Centralized configuration server
  ├── Eureka/                  # Eureka service registry
- ├── UserService/             # Authentication / User microservice (Keycloak integrated)
- ├── fitness-app-frontend/    # React frontend for the app
+ ├── UserService/             # User/Auth microservice (Keycloak integrated)
+ ├── fitness-app-frontend/    # React frontend for the application
  ├── docker/
  │    └── mysql_init/         # MySQL initialization scripts
  ├── docker-compose.yml       # Runs RabbitMQ, MySQL, MongoDB, and services
  ├── .gitignore
  └── README.md
+```
 
 ---
 
 ## 🧪 How to Run
-1. Start services using Docker Compose  
-2. Start Eureka + Config Server  
-3. Run each microservice  
-4. Access protected APIs via API Gateway  
+
+### **1️⃣ Start Infrastructure**
+```bash
+docker-compose up -d
+```
+
+### **2️⃣ Start Spring Cloud Services**
+- Run **Eureka**
+- Run **Config Server**
+
+### **3️⃣ Start Each Microservice**
+- UserService  
+- ActivityService  
+- AIService  
+- ApiGateway  
+
+### **4️⃣ Access APIs**
+All requests go through:
+
+```
+http://localhost:8080
+```
+
+(API Gateway will route them internally)
+
 
 ---
 
-## 🔗 Highlights
-- Designed using real industry patterns  
-- Scalable, asynchronous, secure  
-- AI-powered insights  
+## 🌟 Highlights
+
+- Real microservices architecture  
+- Asynchronous, event-driven communication  
+- Industry-level folder structure  
+- AI-powered recommendation engine  
+- Dockerized deployment  
+- Production-like security with Keycloak  
+
+---
+
+## 🔗 Project Links
+
+- **Frontend:** React.js (fitness-app-frontend folder)  
+- **Backend Services:** All individual service folders  
+- **Docker Setup:** docker-compose.yml  
+
+---
+
+## 👤 Author
+
+**Baskaran G**  
+Java Developer | Full Stack Developer | Microservices | DevOps  
+GitHub: https://github.com/Baskaran08  
+LinkedIn: https://www.linkedin.com/in/baskaran--g/
